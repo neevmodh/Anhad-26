@@ -16,6 +16,10 @@ export default function QuickActions() {
   const handleClick = (label: string) => {
     if (label === 'My Bookings') {
       navigate('/bookings');
+    } else if (label === 'PNR Status') {
+      navigate('/pnr-status');
+    } else if (label === 'Live Train') {
+      navigate('/live-status');
     } else {
       toast.info(`${label} feature coming soon!`, {
         description: 'We are working hard to bring this feature to RailGo.',

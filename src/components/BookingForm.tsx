@@ -100,7 +100,10 @@ export default function BookingForm() {
     }
 
     if (state.from.code === state.to.code) {
-      toast.error('Origin and Destination cannot be the same');
+      toast.error('Origin and Destination cannot be the same', {
+        description: `You have selected ${state.from.name} for both. Please choose a different destination.`,
+        duration: 4000
+      });
       return;
     }
 

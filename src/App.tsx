@@ -4,6 +4,8 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { BookingProvider } from "@/contexts/BookingContext";
+import PnrStatus from "./pages/PnrStatus";
+import LiveStatus from "./pages/LiveStatus";
 import Index from "./pages/Index";
 import SearchResults from "./pages/SearchResults";
 import Booking from "./pages/Booking";
@@ -24,6 +26,8 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/search" element={<SearchResults />} />
+            <Route path="/live-status" element={<LiveStatus />} />
+            <Route path="/pnr-status" element={<PnrStatus />} />
             <Route path="/booking" element={<Booking />} />
             <Route path="/bookings" element={<Bookings />} />
             <Route path="/confirmation" element={<Confirmation />} />
