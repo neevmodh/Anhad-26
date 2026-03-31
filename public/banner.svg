@@ -1,0 +1,33 @@
+<svg width="1200" height="400" viewBox="0 0 1200 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4B5AEF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7C3AED;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="15" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <rect width="1200" height="400" rx="40" fill="url(#grad)" />
+  
+  <g filter="url(#glow)">
+    <circle cx="1000" cy="100" r="150" fill="white" fill-opacity="0.05" />
+    <circle cx="200" cy="300" r="100" fill="white" fill-opacity="0.03" />
+  </g>
+
+  <text x="600" y="180" font-family="Arial, sans-serif" font-size="80" font-weight="900" fill="white" text-anchor="middle" letter-spacing="10">ANHAD | RAILGO</text>
+  <text x="600" y="240" font-family="Arial, sans-serif" font-size="24" font-weight="600" fill="white" fill-opacity="0.8" text-anchor="middle" letter-spacing="4">REDESIGNING THE INDIAN RAILWAYS EXPERIENCE</text>
+
+  <rect x="0" y="320" width="1200" height="4" fill="white" fill-opacity="0.2" />
+  
+  <g>
+    <rect x="-100" y="310" width="80" height="20" rx="4" fill="white">
+      <animate attributeName="x" from="-100" to="1300" dur="3s" repeatCount="indefinite" />
+    </rect>
+    <rect x="-110" y="315" width="40" height="10" rx="2" fill="white" fill-opacity="0.5">
+       <animate attributeName="x" from="-110" to="1290" dur="3s" repeatCount="indefinite" />
+    </rect>
+  </g>
+</svg>

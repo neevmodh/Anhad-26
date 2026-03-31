@@ -1,96 +1,112 @@
-# 🚄 Anhad-26 | RailGo
+<p align="center">
+  <img src="https://raw.githubusercontent.com/neevmodh/Anhad-26/main/public/banner.svg" width="1000" alt="RailGo Banner" />
+</p>
 
-**RailGo** is a next-generation railway booking platform reimagined for the modern traveler. Built exclusively for the **Anhad '26 Hackathon**, this project solves the critical friction points of traditional railway interfaces by prioritizing radical simplification, high-fidelity visual design, and instantaneous user feedback.
+# <p align="center">🚄 Anhad-26 | RailGo</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/React-18-blue?style=for-the-badge&logo=react" />
+  <img src="https://img.shields.io/badge/Vite-5.4-indigo?style=for-the-badge&logo=vite" />
+  <img src="https://img.shields.io/badge/Tailwind-3.4-38B2AC?style=for-the-badge&logo=tailwind-css" />
+  <img src="https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript" />
+  <img src="https://img.shields.io/badge/Framer--Motion-11-ff0055?style=for-the-badge&logo=framer" />
+</p>
 
 ---
 
-## 🌟 The Vision: One-Tap Travel
-Traditional railway booking is often cluttered with unnecessary complexity. **RailGo** transforms this into a cinematic, 30-second experience. By merging redundant steps and utilizing smart automation, we've created a platform where booking a ticket feels as fluid as booking a premium airline seat.
+# 📖 Project Overview
+**RailGo** is a radical reimagining of the Indian Railways booking experience. Designed for the **Anhad '26 Hackathon**, it transforms a complex, friction-heavy process into a fluid, cinematic journey. Our mission: **Booking a ticket in under 30 seconds with zero cognitive load.**
 
 ---
 
-## ✨ Core Features & Innovations
+# 🚀 Key Features
 
-### 🚀 30-Second Express Booking
-Our hyper-optimized 3-step checkout (Passengers → Seats → Payment) eliminates cognitive load. Using `Framer Motion`, we ensure every transition feels intentional and premium.
-- **Auto-Fill Logic**: Smart defaults based on previous search trends.
-- **One-Tap Selection**: Minimized clicks for class and quota choices.
+### 🚄 30-Second Express Booking
+A streamlined 3-step checkout that merges redundant screens (Passengers → Seats → Payment).
+- **Architecture**: Powered by a centralized `BookingContext` providing atomic state management.
+- **UX**: 60fps transitions using Framer Motion constants.
 
 ### 🛋️ High-Fidelity Interactive Seat Maps
-A complete departure from generic seat lists. Our interactive coach visualizations (1A, 2A, 3A, SL) provide:
-- **Spatial Awareness**: Clear visualization of berth positions (Upper, Lower, Side).
-- **Real-Time Availability**: Color-coded status badges for instant decision-making.
-- **Mobile-First UX**: Large touch targets optimized for booking on the go.
+Real-time coach visualizations with status indicators.
+- **Seat Types**: 1A, 2A, 3A, SL, 2S.
+- **Validation**: Intelligent seat selection logic that ensures your group sits together.
 
-### 🛰️ Live Train Intelligence & PNR Checker
-Integrated tracking tools built with a professional vertical timeline interface.
-- **Live Status**: Track delays, current stations, and platform numbers in real-time.
-- **PNR Checker**: High-fidelity retrieval of booking status, coach details, and confirmability.
-
-### 🛡️ Smart Route & Submission Validation
-Built-in intelligence to prevent common booking errors.
-- **Station Redundancy Check**: Prevents searches where origin and destination are the same.
-- **Real-Time Sonner Toasts**: Instant, tactile feedback for any invalid input.
-
-### 📊 Persistent Journey Dashboard
-The "My Bookings" page is a hub for your travel history.
-- **Local Persistence**: All confirmed bookings are saved to your session history.
-- **QR Ticket Generation**: Instant, high-fidelity ticket views with scan-ready QR codes.
+### 🛰️ Live Intelligence Hub
+Tracking tools that give you more than just numbers.
+- **Live Status**: A vertical interactive timeline with animated station markers.
+- **PNR Checker**: retrieval of booking status with high-fidelity ticket views.
 
 ---
 
-## 🎨 Design System: The Indigo aesthetic
-**RailGo** follows a strict, premium design language:
-- **Glassmorphism**: Sophisticated backdrop-blur effects and subtle border glows.
-- **8pt Grid Consistency**: Pixel-perfect spacing ensuring visual balance.
-- **Dynamic Micro-animations**: Shimmer effects, hover scaling, and magnetic interactions that make the app feel alive.
-- **Custom Typography**: Utilizing modern sans-serif fonts for maximum readability.
+# 🛠️ Technical Deep Dive (Code Details)
+
+<details>
+<summary><b>🧠 Smart Form Validation Logic</b></summary>
+
+```typescript
+// BookingForm station redundancy check
+if (state.from.code === state.to.code) {
+  toast.error('Origin and Destination cannot be the same', {
+     description: `You have selected ${state.from.name} for both.`,
+     duration: 4000
+  });
+  return;
+}
+```
+</details>
+
+<details>
+<summary><b>📊 State Management Strategy</b></summary>
+
+```typescript
+// Centralized BookingContext for atomic updates
+const [state, setState] = useState<BookingState>(initialState);
+
+const updateField = (field: keyof BookingState, value: any) => {
+  setState(prev => ({ ...prev, [field]: value }));
+};
+```
+</details>
+
+<details>
+<summary><b>🎨 Premium UI Glassmorphism</b></summary>
+
+```css
+/* Custom Glass Utilities in index.css */
+.glass-panel {
+  @apply bg-card/60 backdrop-blur-xl border border-white/10 shadow-glow;
+}
+```
+</details>
 
 ---
 
-## 🛠️ Technology Stack
-- **Framework**: [React 18](https://reactjs.org/) + [TypeScript](https://www.typescriptlang.org/)
-- **Build Tool**: [Vite](https://vitejs.dev/)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **UI Components**: [Shadcn UI](https://ui.shadcn.com/)
-- **Motion**: [Framer Motion](https://www.framer.com/motion/)
-- **Icons**: [Lucide React](https://lucide.dev/)
-- **State Management**: React Context API
-- **Feedback System**: [Sonner](https://sonner.stevenlyui.com/) (Toasts)
+# 🎨 Design Ethics: The Indigo aesthetic
+- **Glassmorphism**: 16px blur radius with 10% white borders for a sophisticated modern depth.
+- **8pt Grid**: Pixel-perfect spacing ensuring visual balance across all resolutions.
+- **Shimmer Effects**: Custom `@keyframes` for skeleton loaders and CTA glows.
 
 ---
 
-## 🚀 Getting Started
+# 🚀 Setup & Launch
 
-### Prerequisites
-- Node.js (v18.0.0 or higher)
-- npm or yarn
-
-### Installation
-1. **Clone the repository**:
+1. **Clone & Enter**:
    ```bash
    git clone https://github.com/neevmodh/Anhad-26.git
+   cd Anhad-26
    ```
-2. **Install dependencies**:
+2. **Ignite Dependencies**:
    ```bash
    npm install
    ```
-3. **Run the development server**:
+3. **Launch Engine**:
    ```bash
    npm run dev
    ```
 
-### Deployment Readiness
-The project includes pre-configured settings for [Vercel](https://vercel.com/) and [Netlify](https://www.netlify.com/), including SPA routing rewrites and build optimizations in `vite.config.ts`.
-
 ---
 
-## 🛣️ Roadmap
-- [ ] AI-Powered Confirmation Probability engine.
-- [ ] Multi-lingual support (Hindi, Marathi, Bengali).
-- [ ] Offline-first "My Bookings" with PWA support.
-- [ ] Native integration for seat availability notifications.
-
----
-
-Developed with ❤️ for the **Anhad '26 Hackathon**.
+<p align="center">
+  <b>Developed for the Anhad '26 Hackathon.</b><br/>
+  <i>Engineered for Speed. Designed for Impact.</i>
+</p>
